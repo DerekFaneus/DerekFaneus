@@ -49,6 +49,4 @@ I enjoy building cybersecurity labs, analyzing security events and learning how 
 - CompTIA Security+ (Preparing)
 - Cisco Cybersecurity Courses
 
-## Contact
 
-LinkedIn: (add your link)
