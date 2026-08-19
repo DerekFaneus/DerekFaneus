@@ -1,0 +1,5 @@
+[
+  { "id": "github", "name": "GitHub", "url": "https://github.com" },
+  { "id": "anthropic", "name": "Anthropic", "url": "https://www.anthropic.com" },
+  { "id": "portfolio", "name": "Mon portfolio", "url": "https://ferrybeneche.netlify.app" }
+]
