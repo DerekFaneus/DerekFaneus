@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UptimeWatch — Signal Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="header__title">
+      <span class="header__eyebrow">/// SIGNAL BOARD</span>
+      <h1>UptimeWatch</h1>
+    </div>
+    <div class="header__status">
+      <div class="overall-dot" id="overall-dot"></div>
+      <div>
+        <div class="overall-label" id="overall-label">Chargement…</div>
+        <div class="overall-sub" id="last-sync">dernière synchro : —</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="grid" id="site-grid">
+    <!-- Les cartes de sites sont injectées par app.js -->
+  </main>
+
+  <footer class="footer">
+    <p>Vérifié automatiquement toutes les 30 min via GitHub Actions — zéro serveur, zéro dépendance.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

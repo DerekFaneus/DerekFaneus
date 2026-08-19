@@ -1,0 +1,179 @@
+:root {
+  --bg: #0b1918;
+  --panel: #12221f;
+  --panel-border: #1f3835;
+  --text: #e7f2ef;
+  --muted: #6e8c89;
+  --up: #4fd1c5;
+  --down: #e8664d;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* signature element: subtle horizontal scanline sweeping down, evokes a radar/signal sweep */
+.scanline {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--up), transparent);
+  opacity: 0.5;
+  animation: sweep 6s linear infinite;
+  pointer-events: none;
+  z-index: 50;
+}
+@keyframes sweep {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scanline { animation: none; display: none; }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 48px 32px 24px;
+  border-bottom: 1px solid var(--panel-border);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header__eyebrow {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--up);
+  margin-bottom: 8px;
+}
+
+.header__title h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 5vw, 44px);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.header__status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.overall-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--muted);
+  box-shadow: 0 0 0 4px rgba(79, 209, 197, 0.08);
+  flex-shrink: 0;
+}
+.overall-dot.up { background: var(--up); box-shadow: 0 0 12px var(--up), 0 0 0 4px rgba(79,209,197,0.15); }
+.overall-dot.down { background: var(--down); box-shadow: 0 0 12px var(--down), 0 0 0 4px rgba(232,102,77,0.15); }
+
+.overall-label { font-family: var(--font-display); font-weight: 700; font-size: 16px; }
+.overall-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 32px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.2s ease;
+}
+.card:hover { border-color: var(--up); }
+
+.card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.card__url {
+  color: var(--muted);
+  font-size: 12px;
+  word-break: break-all;
+  text-decoration: none;
+}
+.card__url:hover { color: var(--up); }
+
+.pill {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.pill.up { background: rgba(79,209,197,0.12); color: var(--up); }
+.pill.down { background: rgba(232,102,77,0.12); color: var(--down); }
+
+.card__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  font-size: 12px;
+}
+.stat-label { color: var(--muted); font-size: 10px; letter-spacing: 0.05em; margin-bottom: 4px; }
+.stat-value { font-size: 15px; font-weight: 600; }
+.stat-value.warn { color: var(--down); }
+
+.sparkline {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 28px;
+}
+.sparkline__bar {
+  flex: 1;
+  min-width: 3px;
+  border-radius: 1px;
+  background: var(--panel-border);
+}
+.sparkline__bar.up { background: var(--up); height: 100%; }
+.sparkline__bar.down { background: var(--down); height: 100%; }
+
+.empty {
+  color: var(--muted);
+  padding: 40px;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+.footer {
+  padding: 24px 32px 48px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
